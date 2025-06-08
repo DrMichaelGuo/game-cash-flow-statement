@@ -123,6 +123,7 @@ class CashFlowGame {
             this.displayScenario();
             this.setupDragAndDrop();
             this.updateProgress();
+            this.updateUI();
         } else {
             this.showCompletionMessage();
         }
