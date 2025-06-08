@@ -432,7 +432,10 @@ class CashFlowGame {
     }
 
     showGameSection() {
-        document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
+        const gamesSection = document.getElementById('games');
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetPosition = gamesSection.offsetTop - navbarHeight - 20; // 20px extra padding
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }
 
     showNextLevelButton() {
@@ -496,7 +499,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetElement.offsetTop - navbarHeight - 20; // 20px extra padding
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
             }
         });
     });
@@ -507,7 +512,9 @@ document.addEventListener('DOMContentLoaded', function() {
         playButton.addEventListener('click', function() {
             const gamesSection = document.getElementById('games');
             if (gamesSection) {
-                gamesSection.scrollIntoView({ behavior: 'smooth' });
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = gamesSection.offsetTop - navbarHeight - 20; // 20px extra padding
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
             }
         });
     }
@@ -516,10 +523,12 @@ document.addEventListener('DOMContentLoaded', function() {
 // Global functions for HTML event handlers
 function startGame() {
     game.startGame();
-    // Scroll to games section smoothly
+    // Scroll to games section smoothly with navbar offset
     const gamesSection = document.getElementById('games');
     if (gamesSection) {
-        gamesSection.scrollIntoView({ behavior: 'smooth' });
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetPosition = gamesSection.offsetTop - navbarHeight - 20; // 20px extra padding
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     }
 }
 
@@ -557,7 +566,9 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.offsetTop - navbarHeight - 20; // 20px extra padding
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
             }
         });
     });
