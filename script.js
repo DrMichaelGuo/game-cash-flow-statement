@@ -346,7 +346,6 @@ class CashFlowGame {
     }
 
     showGameSection() {
-        document.getElementById('games').style.display = 'block';
         document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -381,7 +380,8 @@ class CashFlowGame {
         this.streak = 0;
         this.lives = 3;
         this.updateUI();
-        document.getElementById('games').style.display = 'none';
+        // Scroll back to hero section after reset
+        document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
     }
 
     showCompletionMessage() {
@@ -396,9 +396,45 @@ class CashFlowGame {
 // Initialize game instance
 const game = new CashFlowGame();
 
+// Initialize the game when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the first level to show content immediately
+    game.loadLevel();
+    game.updateUI();
+    
+    // Add smooth scrolling for navigation links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Add click handler for hero "Play Games" button
+    const playButton = document.querySelector('.btn-primary');
+    if (playButton) {
+        playButton.addEventListener('click', function() {
+            const gamesSection = document.getElementById('games');
+            if (gamesSection) {
+                gamesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+});
+
 // Global functions for HTML event handlers
 function startGame() {
     game.startGame();
+    // Scroll to games section smoothly
+    const gamesSection = document.getElementById('games');
+    if (gamesSection) {
+        gamesSection.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 function checkAnswer() {

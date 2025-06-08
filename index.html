@@ -53,6 +53,79 @@
             </div>
         </section>
 
+        <!-- Game Section -->
+        <section class="game-section" id="games">
+            <div class="game-header">
+                <h2 class="game-title">Scenario: TechStart UK Ltd</h2>
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Level</span>
+                        <span class="stat-value" id="currentLevel">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Lives</span>
+                        <span class="stat-value" id="lives">❤️❤️❤️</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Streak</span>
+                        <span class="stat-value" id="streak">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-content">
+                <div class="scenario-panel">
+                    <div class="scenario-card">
+                        <h3>Business Transaction</h3>
+                        <p id="scenarioText">Loading scenario...</p>
+                        <div class="transaction-details" id="transactionDetails">
+                            <!-- Transaction details will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cash-flow-builder">
+                    <h3>Drag transactions to the correct category</h3>
+                    <div class="drop-zones">
+                        <div class="drop-zone" data-category="operating">
+                            <h4>Operating Activities</h4>
+                            <p class="category-description">Day-to-day business operations</p>
+                            <div class="drop-area" id="operatingDrop"></div>
+                            <div class="category-total">Total: £<span id="operatingTotal">0</span></div>
+                        </div>
+                        
+                        <div class="drop-zone" data-category="investing">
+                            <h4>Investing Activities</h4>
+                            <p class="category-description">Purchases/sales of long-term assets</p>
+                            <div class="drop-area" id="investingDrop"></div>
+                            <div class="category-total">Total: £<span id="investingTotal">0</span></div>
+                        </div>
+                        
+                        <div class="drop-zone" data-category="financing">
+                            <h4>Financing Activities</h4>
+                            <p class="category-description">Raising/repaying capital</p>
+                            <div class="drop-area" id="financingDrop"></div>
+                            <div class="category-total">Total: £<span id="financingTotal">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="draggable-items" id="draggableItems">
+                        <!-- Draggable transaction items will be populated here -->
+                    </div>
+
+                    <div class="game-actions">
+                        <button class="btn-check" onclick="checkAnswer()">Check Answer</button>
+                        <button class="btn-hint" onclick="showHint()">Hint</button>
+                        <button class="btn-next" onclick="nextLevel()" style="display: none;">Next Level</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </section>
+
         <!-- Learn Section -->
         <section class="learn-section" id="learn">
             <div class="section-container">
@@ -257,79 +330,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Game Section -->
-        <section class="game-section" id="games" style="display: none;">
-            <div class="game-header">
-                <h2 class="game-title">Scenario: TechStart UK Ltd</h2>
-                <div class="game-stats">
-                    <div class="stat">
-                        <span class="stat-label">Level</span>
-                        <span class="stat-value" id="currentLevel">1</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Lives</span>
-                        <span class="stat-value" id="lives">❤️❤️❤️</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Streak</span>
-                        <span class="stat-value" id="streak">0</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="game-content">
-                <div class="scenario-panel">
-                    <div class="scenario-card">
-                        <h3>Business Transaction</h3>
-                        <p id="scenarioText">Loading scenario...</p>
-                        <div class="transaction-details" id="transactionDetails">
-                            <!-- Transaction details will be populated here -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cash-flow-builder">
-                    <h3>Drag transactions to the correct category</h3>
-                    <div class="drop-zones">
-                        <div class="drop-zone" data-category="operating">
-                            <h4>Operating Activities</h4>
-                            <p class="category-description">Day-to-day business operations</p>
-                            <div class="drop-area" id="operatingDrop"></div>
-                            <div class="category-total">Total: £<span id="operatingTotal">0</span></div>
-                        </div>
-                        
-                        <div class="drop-zone" data-category="investing">
-                            <h4>Investing Activities</h4>
-                            <p class="category-description">Purchases/sales of long-term assets</p>
-                            <div class="drop-area" id="investingDrop"></div>
-                            <div class="category-total">Total: £<span id="investingTotal">0</span></div>
-                        </div>
-                        
-                        <div class="drop-zone" data-category="financing">
-                            <h4>Financing Activities</h4>
-                            <p class="category-description">Raising/repaying capital</p>
-                            <div class="drop-area" id="financingDrop"></div>
-                            <div class="category-total">Total: £<span id="financingTotal">0</span></div>
-                        </div>
-                    </div>
-
-                    <div class="draggable-items" id="draggableItems">
-                        <!-- Draggable transaction items will be populated here -->
-                    </div>
-
-                    <div class="game-actions">
-                        <button class="btn-check" onclick="checkAnswer()">Check Answer</button>
-                        <button class="btn-hint" onclick="showHint()">Hint</button>
-                        <button class="btn-next" onclick="nextLevel()" style="display: none;">Next Level</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
             </div>
         </section>
 

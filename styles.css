@@ -23,6 +23,7 @@
     --spacing-lg: 24px;
     --spacing-xl: 32px;
     --spacing-xxl: 48px;
+    scroll-behavior: smooth;
 }
 
 * {
