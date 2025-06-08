@@ -15,41 +15,127 @@ class CashFlowGame {
         return [
             {
                 level: 1,
-                company: "TechStart UK Ltd",
-                description: "A young technology startup in London has completed its first quarter of operations. They've been busy developing their software product and securing initial customers.",
+                company: "Digital Solutions Ltd",
+                description: "A small web design company in Brighton has just started trading. They've completed their first project for a local restaurant.",
                 transactions: [
-                    { id: 1, text: "Received £25,000 cash from customer payments", amount: 25000, category: "operating", type: "inflow" },
-                    { id: 2, text: "Paid £15,000 for office rent and utilities", amount: -15000, category: "operating", type: "outflow" },
-                    { id: 3, text: "Purchased £30,000 of computer equipment", amount: -30000, category: "investing", type: "outflow" },
-                    { id: 4, text: "Received £50,000 from venture capital funding", amount: 50000, category: "financing", type: "inflow" }
+                    { id: 1, text: "Received £2,500 from client for website development", amount: 2500, category: "operating", type: "inflow" }
                 ]
             },
             {
                 level: 2,
-                company: "Green Energy Solutions Ltd",
-                description: "A renewable energy company in Manchester is expanding operations. They've made several strategic investments and operational decisions this quarter.",
+                company: "Green Thumb Gardening Ltd",
+                description: "A landscaping business in Leeds has had a busy month. They've served customers and invested in new equipment.",
                 transactions: [
-                    { id: 1, text: "Cash sales to customers: £80,000", amount: 80000, category: "operating", type: "inflow" },
-                    { id: 2, text: "Paid suppliers for materials: £45,000", amount: -45000, category: "operating", type: "outflow" },
-                    { id: 3, text: "Purchased manufacturing equipment: £120,000", amount: -120000, category: "investing", type: "outflow" },
-                    { id: 4, text: "Sold old machinery for £15,000", amount: 15000, category: "investing", type: "inflow" },
-                    { id: 5, text: "Obtained bank loan: £75,000", amount: 75000, category: "financing", type: "inflow" },
-                    { id: 6, text: "Paid loan interest: £2,500", amount: -2500, category: "financing", type: "outflow" }
+                    { id: 1, text: "Cash received from garden maintenance services: £4,200", amount: 4200, category: "operating", type: "inflow" },
+                    { id: 2, text: "Purchased new lawn mower and tools: £1,800", amount: -1800, category: "investing", type: "outflow" }
                 ]
             },
             {
                 level: 3,
-                company: "Royal Retail Group plc",
-                description: "A well-established retail chain with stores across the UK is restructuring its operations and making strategic changes to improve profitability.",
+                company: "TechStart UK Ltd",
+                description: "A young technology startup in London has completed its first quarter. They've secured funding and started operations.",
                 transactions: [
-                    { id: 1, text: "Customer receipts from sales: £200,000", amount: 200000, category: "operating", type: "inflow" },
-                    { id: 2, text: "Payments to suppliers: £120,000", amount: -120000, category: "operating", type: "outflow" },
-                    { id: 3, text: "Employee wages and salaries: £45,000", amount: -45000, category: "operating", type: "outflow" },
-                    { id: 4, text: "Income tax payment: £8,000", amount: -8000, category: "operating", type: "outflow" },
-                    { id: 5, text: "Purchased new store fixtures: £35,000", amount: -35000, category: "investing", type: "outflow" },
-                    { id: 6, text: "Sold underperforming store: £180,000", amount: 180000, category: "investing", type: "inflow" },
-                    { id: 7, text: "Dividend payment to shareholders: £25,000", amount: -25000, category: "financing", type: "outflow" },
-                    { id: 8, text: "Repaid portion of long-term debt: £40,000", amount: -40000, category: "financing", type: "outflow" }
+                    { id: 1, text: "Received £25,000 cash from customer payments", amount: 25000, category: "operating", type: "inflow" },
+                    { id: 2, text: "Paid £15,000 for office rent and utilities", amount: -15000, category: "operating", type: "outflow" },
+                    { id: 3, text: "Received £50,000 from angel investor funding", amount: 50000, category: "financing", type: "inflow" }
+                ]
+            },
+            {
+                level: 4,
+                company: "Artisan Bakery plc",
+                description: "A traditional bakery in Bath is expanding. They've opened a second location and are managing increased operations.",
+                transactions: [
+                    { id: 1, text: "Daily cash sales from customers: £8,500", amount: 8500, category: "operating", type: "inflow" },
+                    { id: 2, text: "Paid suppliers for flour and ingredients: £3,200", amount: -3200, category: "operating", type: "outflow" },
+                    { id: 3, text: "Staff wages for the month: £5,400", amount: -5400, category: "operating", type: "outflow" },
+                    { id: 4, text: "Purchased commercial oven for new shop: £12,000", amount: -12000, category: "investing", type: "outflow" }
+                ]
+            },
+            {
+                level: 5,
+                company: "Northern Logistics Ltd",
+                description: "A freight and delivery company in Manchester is modernising its fleet and expanding services across the North West.",
+                transactions: [
+                    { id: 1, text: "Customer payments for delivery services: £45,000", amount: 45000, category: "operating", type: "inflow" },
+                    { id: 2, text: "Fuel and vehicle maintenance costs: £18,500", amount: -18500, category: "operating", type: "outflow" },
+                    { id: 3, text: "Driver wages and National Insurance: £22,000", amount: -22000, category: "operating", type: "outflow" },
+                    { id: 4, text: "Purchased three new delivery vans: £75,000", amount: -75000, category: "investing", type: "outflow" },
+                    { id: 5, text: "Bank loan for vehicle financing: £60,000", amount: 60000, category: "financing", type: "inflow" }
+                ]
+            },
+            {
+                level: 6,
+                company: "Green Energy Solutions Ltd",
+                description: "A renewable energy company in Glasgow is expanding operations. They've made strategic investments and operational decisions this quarter.",
+                transactions: [
+                    { id: 1, text: "Cash sales to customers: £95,000", amount: 95000, category: "operating", type: "inflow" },
+                    { id: 2, text: "Paid suppliers for solar panels and materials: £52,000", amount: -52000, category: "operating", type: "outflow" },
+                    { id: 3, text: "Employee salaries and PAYE contributions: £28,000", amount: -28000, category: "operating", type: "outflow" },
+                    { id: 4, text: "Purchased manufacturing equipment: £85,000", amount: -85000, category: "investing", type: "outflow" },
+                    { id: 5, text: "Sold old machinery for £12,000", amount: 12000, category: "investing", type: "inflow" },
+                    { id: 6, text: "Obtained bank loan for expansion: £70,000", amount: 70000, category: "financing", type: "inflow" }
+                ]
+            },
+            {
+                level: 7,
+                company: "Heritage Hotels Group plc",
+                description: "A boutique hotel chain in the Cotswolds is renovating properties and managing seasonal operations during peak tourist season.",
+                transactions: [
+                    { id: 1, text: "Guest accommodation and restaurant receipts: £185,000", amount: 185000, category: "operating", type: "inflow" },
+                    { id: 2, text: "Food and beverage supplier payments: £65,000", amount: -65000, category: "operating", type: "outflow" },
+                    { id: 3, text: "Housekeeping and restaurant staff wages: £45,000", amount: -45000, category: "operating", type: "outflow" },
+                    { id: 4, text: "Utilities and property maintenance: £18,500", amount: -18500, category: "operating", type: "outflow" },
+                    { id: 5, text: "Room renovation and new furniture: £95,000", amount: -95000, category: "investing", type: "outflow" },
+                    { id: 6, text: "Sold unused land adjacent to hotel: £150,000", amount: 150000, category: "investing", type: "inflow" },
+                    { id: 7, text: "Dividend payment to shareholders: £35,000", amount: -35000, category: "financing", type: "outflow" }
+                ]
+            },
+            {
+                level: 8,
+                company: "Precision Engineering Ltd",
+                description: "A manufacturing company in Birmingham specialising in automotive parts is investing heavily in new technology while managing complex operations.",
+                transactions: [
+                    { id: 1, text: "Customer receipts from automotive contracts: £240,000", amount: 240000, category: "operating", type: "inflow" },
+                    { id: 2, text: "Raw materials and components purchased: £125,000", amount: -125000, category: "operating", type: "outflow" },
+                    { id: 3, text: "Manufacturing staff wages and benefits: £68,000", amount: -68000, category: "operating", type: "outflow" },
+                    { id: 4, text: "Corporation tax payment to HMRC: £15,000", amount: -15000, category: "operating", type: "outflow" },
+                    { id: 5, text: "Factory rent and business rates: £22,000", amount: -22000, category: "operating", type: "outflow" },
+                    { id: 6, text: "Purchased CNC machinery and robotics: £180,000", amount: -180000, category: "investing", type: "outflow" },
+                    { id: 7, text: "Proceeds from sale of old equipment: £35,000", amount: 35000, category: "investing", type: "inflow" },
+                    { id: 8, text: "Bank loan repayment (capital portion): £25,000", amount: -25000, category: "financing", type: "outflow" }
+                ]
+            },
+            {
+                level: 9,
+                company: "Royal Retail Group plc",
+                description: "A major retail chain with stores across the UK is restructuring operations, closing underperforming stores, and investing in digital transformation.",
+                transactions: [
+                    { id: 1, text: "Customer receipts from all store sales: £450,000", amount: 450000, category: "operating", type: "inflow" },
+                    { id: 2, text: "Payments to suppliers and wholesalers: £285,000", amount: -285000, category: "operating", type: "outflow" },
+                    { id: 3, text: "Employee wages across all locations: £95,000", amount: -95000, category: "operating", type: "outflow" },
+                    { id: 4, text: "VAT payment to HMRC: £38,000", amount: -38000, category: "operating", type: "outflow" },
+                    { id: 5, text: "Store rent and property costs: £52,000", amount: -52000, category: "operating", type: "outflow" },
+                    { id: 6, text: "Investment in e-commerce platform and IT systems: £120,000", amount: -120000, category: "investing", type: "outflow" },
+                    { id: 7, text: "Sale of underperforming store property: £280,000", amount: 280000, category: "investing", type: "inflow" },
+                    { id: 8, text: "Dividend payment to shareholders: £45,000", amount: -45000, category: "financing", type: "outflow" },
+                    { id: 9, text: "Repayment of long-term debt facility: £75,000", amount: -75000, category: "financing", type: "outflow" }
+                ]
+            },
+            {
+                level: 10,
+                company: "Global Financial Services plc",
+                description: "A major financial services company in the City of London is undergoing significant restructuring, making strategic acquisitions, and managing complex financial operations.",
+                transactions: [
+                    { id: 1, text: "Fee income from investment management: £850,000", amount: 850000, category: "operating", type: "inflow" },
+                    { id: 2, text: "Interest received from loans and mortgages: £320,000", amount: 320000, category: "operating", type: "inflow" },
+                    { id: 3, text: "Salaries and bonuses for all staff: £485,000", amount: -485000, category: "operating", type: "outflow" },
+                    { id: 4, text: "Operating expenses and office costs: £125,000", amount: -125000, category: "operating", type: "outflow" },
+                    { id: 5, text: "Corporation tax and regulatory fees: £95,000", amount: -95000, category: "operating", type: "outflow" },
+                    { id: 6, text: "Professional services and compliance costs: £68,000", amount: -68000, category: "operating", type: "outflow" },
+                    { id: 7, text: "Acquisition of smaller advisory firm: £450,000", amount: -450000, category: "investing", type: "outflow" },
+                    { id: 8, text: "Investment in fintech software platform: £180,000", amount: -180000, category: "investing", type: "outflow" },
+                    { id: 9, text: "Proceeds from sale of property investments: £220,000", amount: 220000, category: "investing", type: "inflow" },
+                    { id: 10, text: "Share buyback programme: £150,000", amount: -150000, category: "financing", type: "outflow" }
                 ]
             }
         ];
