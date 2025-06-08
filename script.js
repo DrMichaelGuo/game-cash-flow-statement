@@ -158,15 +158,20 @@ class CashFlowGame {
             item.dataset.category = transaction.category;
             
             // Format amount with proper UK currency formatting
+            const isNegative = transaction.amount < 0;
+            const absoluteAmount = Math.abs(transaction.amount);
             const formattedAmount = new Intl.NumberFormat('en-GB', {
                 style: 'currency',
                 currency: 'GBP',
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
-            }).format(Math.abs(transaction.amount));
+            }).format(absoluteAmount);
+            
+            // Display negative amounts in brackets for proper accounting presentation
+            const displayAmount = isNegative ? `(${formattedAmount})` : formattedAmount;
             
             item.innerHTML = `
-                <div style="font-weight: 600; margin-bottom: 4px;">${formattedAmount}</div>
+                <div style="font-weight: 600; margin-bottom: 4px;">${displayAmount}</div>
                 <div style="font-size: 14px;">${transaction.text}</div>
             `;
             
@@ -259,10 +264,17 @@ class CashFlowGame {
             });
             
             const totalElement = document.getElementById(`${category}Total`);
-            totalElement.textContent = new Intl.NumberFormat('en-GB', {
+            
+            // Format total with brackets for negative amounts
+            const isNegativeTotal = total < 0;
+            const absoluteTotal = Math.abs(total);
+            const formattedTotal = new Intl.NumberFormat('en-GB', {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
-            }).format(total);
+            }).format(absoluteTotal);
+            
+            const displayTotal = isNegativeTotal ? `(${formattedTotal})` : formattedTotal;
+            totalElement.textContent = displayTotal;
             
             // Color coding for totals
             if (total > 0) {
