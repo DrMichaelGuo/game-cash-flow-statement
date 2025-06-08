@@ -941,6 +941,20 @@ body {
     line-height: 1.5;
 }
 
+/* About Section - Simplified */
+.about-simple {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-description {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xxl);
+}
+
 /* Stats Section */
 .stats-section {
     margin-bottom: var(--spacing-xxl);
