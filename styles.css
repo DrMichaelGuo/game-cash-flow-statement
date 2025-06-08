@@ -121,14 +121,14 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xxl);
     align-items: center;
-    min-height: 80vh;
+    min-height: 100vh;
 }
 
 .hero-title {
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: var(--spacing-lg);
+    line-height: 1.1;
+    margin-bottom: var(--spacing-xl);
     background: linear-gradient(135deg, var(--text-primary), var(--primary-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -136,10 +136,11 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 20px;
+    font-size: 22px;
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-xl);
-    line-height: 1.5;
+    margin-bottom: var(--spacing-xxl);
+    line-height: 1.6;
+    max-width: 90%;
 }
 
 .hero-buttons {
