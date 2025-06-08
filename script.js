@@ -548,6 +548,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Add smooth scrolling for footer links
+    document.querySelectorAll('.footer-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = target.offsetTop - navbarHeight - 20; // 20px extra padding
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+        });
+    });
+    
     // Close modals when clicking outside
     document.querySelectorAll('.modal').forEach(modal => {
         modal.addEventListener('click', function(e) {
