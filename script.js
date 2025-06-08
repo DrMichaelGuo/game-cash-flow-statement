@@ -3,9 +3,8 @@ class CashFlowGame {
     constructor() {
         this.currentLevel = 1;
         this.score = 0;
-        this.streak = 0;
         this.lives = 3;
-        this.maxLevel = 10;
+        this.maxLevel = 8;
         this.scenarios = this.initializeScenarios();
         this.currentScenario = null;
         this.playerAnswers = {};
@@ -104,39 +103,6 @@ class CashFlowGame {
                     { id: 7, text: "Proceeds from sale of old equipment: £35,000", amount: 35000, category: "investing", type: "inflow" },
                     { id: 8, text: "Bank loan repayment (capital portion): £25,000", amount: -25000, category: "financing", type: "outflow" }
                 ]
-            },
-            {
-                level: 9,
-                company: "Royal Retail Group plc",
-                description: "A major retail chain with stores across the UK is restructuring operations, closing underperforming stores, and investing in digital transformation.",
-                transactions: [
-                    { id: 1, text: "Customer receipts from all store sales: £450,000", amount: 450000, category: "operating", type: "inflow" },
-                    { id: 2, text: "Payments to suppliers and wholesalers: £285,000", amount: -285000, category: "operating", type: "outflow" },
-                    { id: 3, text: "Employee wages across all locations: £95,000", amount: -95000, category: "operating", type: "outflow" },
-                    { id: 4, text: "VAT payment to HMRC: £38,000", amount: -38000, category: "operating", type: "outflow" },
-                    { id: 5, text: "Store rent and property costs: £52,000", amount: -52000, category: "operating", type: "outflow" },
-                    { id: 6, text: "Investment in e-commerce platform and IT systems: £120,000", amount: -120000, category: "investing", type: "outflow" },
-                    { id: 7, text: "Sale of underperforming store property: £280,000", amount: 280000, category: "investing", type: "inflow" },
-                    { id: 8, text: "Dividend payment to shareholders: £45,000", amount: -45000, category: "financing", type: "outflow" },
-                    { id: 9, text: "Repayment of long-term debt facility: £75,000", amount: -75000, category: "financing", type: "outflow" }
-                ]
-            },
-            {
-                level: 10,
-                company: "Global Financial Services plc",
-                description: "A major financial services company in the City of London is undergoing significant restructuring, making strategic acquisitions, and managing complex financial operations.",
-                transactions: [
-                    { id: 1, text: "Fee income from investment management: £850,000", amount: 850000, category: "operating", type: "inflow" },
-                    { id: 2, text: "Interest received from loans and mortgages: £320,000", amount: 320000, category: "operating", type: "inflow" },
-                    { id: 3, text: "Salaries and bonuses for all staff: £485,000", amount: -485000, category: "operating", type: "outflow" },
-                    { id: 4, text: "Operating expenses and office costs: £125,000", amount: -125000, category: "operating", type: "outflow" },
-                    { id: 5, text: "Corporation tax and regulatory fees: £95,000", amount: -95000, category: "operating", type: "outflow" },
-                    { id: 6, text: "Professional services and compliance costs: £68,000", amount: -68000, category: "operating", type: "outflow" },
-                    { id: 7, text: "Acquisition of smaller advisory firm: £450,000", amount: -450000, category: "investing", type: "outflow" },
-                    { id: 8, text: "Investment in fintech software platform: £180,000", amount: -180000, category: "investing", type: "outflow" },
-                    { id: 9, text: "Proceeds from sale of property investments: £220,000", amount: 220000, category: "investing", type: "inflow" },
-                    { id: 10, text: "Share buyback programme: £150,000", amount: -150000, category: "financing", type: "outflow" }
-                ]
             }
         ];
     }
@@ -144,7 +110,6 @@ class CashFlowGame {
     startGame() {
         this.currentLevel = 1;
         this.score = 0;
-        this.streak = 0;
         this.lives = 3;
         this.updateUI();
         this.loadLevel();
@@ -166,6 +131,10 @@ class CashFlowGame {
     displayScenario() {
         const scenarioText = document.getElementById('scenarioText');
         const transactionDetails = document.getElementById('transactionDetails');
+        const gameTitle = document.querySelector('.game-title');
+        
+        // Update the company name in the game title
+        gameTitle.textContent = `Scenario: ${this.currentScenario.company}`;
         
         scenarioText.textContent = this.currentScenario.description;
         
@@ -343,17 +312,13 @@ class CashFlowGame {
     }
 
     handleCorrectAnswer() {
-        this.streak++;
-        const baseScore = 100;
-        const streakBonus = this.streak * 10;
-        const levelBonus = this.currentLevel * 5;
-        const earnedScore = baseScore + streakBonus + levelBonus;
+        const earnedScore = 100;
         
         this.score += earnedScore;
         
         this.showFeedback(
             'Brilliant!', 
-            `Perfect categorisation! You earned ${earnedScore} points (${baseScore} base + ${streakBonus} streak bonus + ${levelBonus} level bonus).`,
+            `Perfect categorisation! You earned ${earnedScore} points.`,
             'success'
         );
         
@@ -362,7 +327,6 @@ class CashFlowGame {
     }
 
     handleIncorrectAnswer(correct, total) {
-        this.streak = 0;
         this.lives = Math.max(0, this.lives - 1);
         
         if (this.lives === 0) {
@@ -419,7 +383,6 @@ class CashFlowGame {
     updateUI() {
         document.getElementById('totalScore').textContent = this.score.toLocaleString();
         document.getElementById('currentLevel').textContent = this.currentLevel;
-        document.getElementById('streak').textContent = this.streak;
         
         // Update lives display
         const livesElement = document.getElementById('lives');
@@ -466,7 +429,6 @@ class CashFlowGame {
     resetGame() {
         this.currentLevel = 1;
         this.score = 0;
-        this.streak = 0;
         this.lives = 3;
         this.updateUI();
         // Scroll back to hero section after reset
