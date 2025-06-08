@@ -253,6 +253,8 @@ class CashFlowGame {
 
     updateCategoryTotals() {
         const categories = ['operating', 'investing', 'financing'];
+        let netTotal = 0;
+        const categoryTotals = {};
         
         categories.forEach(category => {
             let total = 0;
@@ -262,6 +264,9 @@ class CashFlowGame {
             items.forEach(item => {
                 total += parseInt(item.dataset.amount);
             });
+            
+            categoryTotals[category] = total;
+            netTotal += total;
             
             const totalElement = document.getElementById(`${category}Total`);
             
@@ -283,6 +288,62 @@ class CashFlowGame {
                 totalElement.style.color = 'var(--error-red)';
             } else {
                 totalElement.style.color = 'var(--primary-blue)';
+            }
+        });
+        
+        // Update Net Cash Flow
+        this.updateNetCashFlow(netTotal, categoryTotals);
+    }
+    
+    updateNetCashFlow(netTotal, categoryTotals) {
+        const netCashFlowElement = document.getElementById('netCashFlow');
+        const netAmountElement = netCashFlowElement;
+        
+        // Format net total with brackets for negative amounts
+        const isNegativeNet = netTotal < 0;
+        const absoluteNet = Math.abs(netTotal);
+        const formattedNet = new Intl.NumberFormat('en-GB', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(absoluteNet);
+        
+        const displayNet = isNegativeNet ? `(£${formattedNet})` : `£${formattedNet}`;
+        netCashFlowElement.textContent = displayNet;
+        
+        // Update styling based on net amount
+        netAmountElement.classList.remove('positive', 'negative', 'neutral');
+        if (netTotal > 0) {
+            netAmountElement.classList.add('positive');
+        } else if (netTotal < 0) {
+            netAmountElement.classList.add('negative');
+        } else {
+            netAmountElement.classList.add('neutral');
+        }
+        
+        // Update breakdown values
+        const categories = ['operating', 'investing', 'financing'];
+        categories.forEach(category => {
+            const total = categoryTotals[category];
+            const breakdownElement = document.getElementById(`net${category.charAt(0).toUpperCase() + category.slice(1)}`);
+            
+            if (breakdownElement) {
+                const isNegative = total < 0;
+                const absolute = Math.abs(total);
+                const formatted = new Intl.NumberFormat('en-GB', {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                }).format(absolute);
+                
+                const display = isNegative ? `(£${formatted})` : `£${formatted}`;
+                breakdownElement.textContent = display;
+                
+                // Color coding for breakdown
+                breakdownElement.classList.remove('positive', 'negative');
+                if (total > 0) {
+                    breakdownElement.classList.add('positive');
+                } else if (total < 0) {
+                    breakdownElement.classList.add('negative');
+                }
             }
         });
     }

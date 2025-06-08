@@ -70,7 +70,8 @@
             </div>
 
             <div class="game-content">
-                <div class="scenario-panel">
+                <!-- Scenario Section -->
+                <div class="scenario-section">
                     <div class="scenario-card">
                         <h3>Business Transaction</h3>
                         <p id="scenarioText">Loading scenario...</p>
@@ -80,40 +81,63 @@
                     </div>
                 </div>
 
-                <div class="cash-flow-builder">
-                    <h3>Drag transactions to the correct category</h3>
-                    <div class="drop-zones">
-                        <div class="drop-zone" data-category="operating">
-                            <h4>Operating Activities</h4>
-                            <p class="category-description">Day-to-day business operations</p>
-                            <div class="drop-area" id="operatingDrop"></div>
-                            <div class="category-total">Total: £<span id="operatingTotal">0</span></div>
-                        </div>
-                        
-                        <div class="drop-zone" data-category="investing">
-                            <h4>Investing Activities</h4>
-                            <p class="category-description">Long-term asset transactions</p>
-                            <div class="drop-area" id="investingDrop"></div>
-                            <div class="category-total">Total: £<span id="investingTotal">0</span></div>
-                        </div>
-                        
-                        <div class="drop-zone" data-category="financing">
-                            <h4>Financing Activities</h4>
-                            <p class="category-description">Raising/repaying capital</p>
-                            <div class="drop-area" id="financingDrop"></div>
-                            <div class="category-total">Total: £<span id="financingTotal">0</span></div>
-                        </div>
+                <!-- Cash Flow Categories and Net Cash Flow -->
+                <div class="cash-flow-grid">
+                    <div class="drop-zone" data-category="operating">
+                        <h4>Operating Activities</h4>
+                        <p class="category-description">Day-to-day business operations</p>
+                        <div class="drop-area" id="operatingDrop"></div>
+                        <div class="category-total">Total: £<span id="operatingTotal">0</span></div>
+                    </div>
+                    
+                    <div class="drop-zone" data-category="investing">
+                        <h4>Investing Activities</h4>
+                        <p class="category-description">Long-term asset transactions</p>
+                        <div class="drop-area" id="investingDrop"></div>
+                        <div class="category-total">Total: £<span id="investingTotal">0</span></div>
+                    </div>
+                    
+                    <div class="drop-zone" data-category="financing">
+                        <h4>Financing Activities</h4>
+                        <p class="category-description">Raising/repaying capital</p>
+                        <div class="drop-area" id="financingDrop"></div>
+                        <div class="category-total">Total: £<span id="financingTotal">0</span></div>
                     </div>
 
+                    <!-- Net Cash Flow as Fourth Box -->
+                    <div class="net-cash-flow-box">
+                        <h4>Net Cash Flow</h4>
+                        <p class="category-description">Total change in cash position</p>
+                        <div class="net-amount-display" id="netCashFlow">£0</div>
+                        <div class="net-breakdown">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Operating:</span>
+                                <span class="breakdown-value" id="netOperating">£0</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Investing:</span>
+                                <span class="breakdown-value" id="netInvesting">£0</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Financing:</span>
+                                <span class="breakdown-value" id="netFinancing">£0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Transactions -->
+                <div class="available-transactions">
+                    <h3>Available Transactions</h3>
                     <div class="draggable-items" id="draggableItems">
                         <!-- Draggable transaction items will be populated here -->
                     </div>
+                </div>
 
-                    <div class="game-actions">
-                        <button class="btn-check" onclick="checkAnswer()">Check Answer</button>
-                        <button class="btn-hint" onclick="showHint()">Hint</button>
-                        <button class="btn-next" onclick="nextLevel()" style="display: none;">Next Level</button>
-                    </div>
+                <div class="game-actions">
+                    <button class="btn-check" onclick="checkAnswer()">Check Answer</button>
+                    <button class="btn-hint" onclick="showHint()">Hint</button>
+                    <button class="btn-next" onclick="nextLevel()" style="display: none;">Next Level</button>
                 </div>
             </div>
 

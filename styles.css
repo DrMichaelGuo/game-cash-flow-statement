@@ -289,15 +289,15 @@ body {
 }
 
 .game-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+    flex-direction: column;
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
 }
 
-/* Scenario Panel */
-.scenario-panel {
-    height: fit-content;
+/* Scenario Section */
+.scenario-section {
+    width: 100%;
 }
 
 .scenario-card {
@@ -305,6 +305,7 @@ body {
     padding: var(--spacing-xl);
     border-radius: var(--border-radius);
     box-shadow: 0 4px 20px var(--shadow-secondary);
+    text-align: center;
 }
 
 .scenario-card h3 {
@@ -326,19 +327,25 @@ body {
     border-left: 4px solid var(--primary-blue);
 }
 
-/* Cash Flow Builder */
+/* Cash Flow Grid - Four Equal Boxes */
+.cash-flow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Remove old styles */
+.scenario-panel {
+    display: none;
+}
+
 .cash-flow-builder h3 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
+    display: none;
 }
 
 .drop-zones {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+    display: none;
 }
 
 .drop-zone {
@@ -398,6 +405,201 @@ body {
     font-weight: 600;
     font-size: 16px;
     color: var(--primary-blue);
+}
+
+/* Net Cash Flow Box - Fourth Grid Item */
+.net-cash-flow-box {
+    background: var(--background-tertiary);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 20px var(--shadow-secondary);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid var(--border-color);
+}
+
+.net-cash-flow-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px var(--shadow-secondary);
+}
+
+.net-cash-flow-box h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.net-amount-display {
+    font-size: 28px;
+    font-weight: 700;
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-small);
+    background: var(--background-primary);
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.net-amount-display.positive {
+    color: var(--success-green);
+    border-color: var(--success-green);
+    background: rgba(52, 199, 89, 0.05);
+}
+
+.net-amount-display.negative {
+    color: var(--error-red);
+    border-color: var(--error-red);
+    background: rgba(255, 59, 48, 0.05);
+}
+
+.net-amount-display.neutral {
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+.net-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.breakdown-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.breakdown-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.breakdown-value.positive {
+    color: var(--success-green);
+}
+
+.breakdown-value.negative {
+    color: var(--error-red);
+}
+
+/* Available Transactions Section */
+.available-transactions {
+    margin-top: var(--spacing-xl);
+}
+
+.available-transactions h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    color: var(--text-primary);
+}
+
+/* Net Cash Flow Summary */
+.net-cash-flow {
+    margin: var(--spacing-xl) 0;
+    display: flex;
+    justify-content: center;
+}
+
+.net-cash-flow-card {
+    background: linear-gradient(135deg, var(--background-secondary), var(--background-tertiary));
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    box-shadow: 0 8px 32px var(--shadow-secondary);
+    min-width: 350px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.net-cash-flow-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px var(--shadow-secondary);
+}
+
+.net-cash-flow h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.net-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.net-amount {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-small);
+    background: var(--background-primary);
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.net-amount.positive {
+    color: var(--success-green);
+    border-color: var(--success-green);
+    background: rgba(52, 199, 89, 0.05);
+}
+
+.net-amount.negative {
+    color: var(--error-red);
+    border-color: var(--error-red);
+    background: rgba(255, 59, 48, 0.05);
+}
+
+.net-amount.neutral {
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+.net-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--spacing-md);
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.breakdown-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.breakdown-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.breakdown-value.positive {
+    color: var(--success-green);
+}
+
+.breakdown-value.negative {
+    color: var(--error-red);
 }
 
 /* Draggable Items */
@@ -1138,12 +1340,17 @@ body {
         font-size: 36px;
     }
     
-    .game-content {
-        grid-template-columns: 1fr;
+    .cash-flow-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
     }
     
-    .drop-zones {
-        grid-template-columns: 1fr;
+    .net-amount-display {
+        font-size: 24px;
+    }
+    
+    .breakdown-item {
+        font-size: 11px;
     }
 }
 
@@ -1166,6 +1373,19 @@ body {
     
     .hero-subtitle {
         font-size: 18px;
+    }
+    
+    .cash-flow-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .net-cash-flow-box {
+        order: -1; /* Move Net Cash Flow to top on mobile */
+    }
+    
+    .scenario-card {
+        padding: var(--spacing-lg);
     }
     
     .hero-buttons {
