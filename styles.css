@@ -1328,6 +1328,60 @@ body {
     margin: 0;
 }
 
+/* Combined Game Header and Scenario Layout */
+.game-header-scenario-combined {
+    background: var(--background-tertiary);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px var(--shadow-secondary);
+    margin-bottom: var(--spacing-xl);
+    overflow: hidden;
+}
+
+.header-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scenario-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.scenario-title-section .game-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.scenario-title-section .business-transaction-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.scenario-content {
+    padding: var(--spacing-lg);
+}
+
+.scenario-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+/* Hide old separate sections when using combined layout */
+.game-header-scenario-combined ~ .game-header,
+.game-header-scenario-combined ~ .scenario-section {
+    display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero {
@@ -1460,6 +1514,31 @@ body {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 1024px) {
+    .header-stats-row {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+        padding: var(--spacing-md);
+    }
+    
+    .scenario-title-section .game-title {
+        font-size: 20px;
+    }
+    
+    .scenario-title-section .business-transaction-title {
+        font-size: 14px;
+    }
+    
+    .scenario-content {
+        padding: var(--spacing-md);
+    }
+    
+    .game-stats {
         gap: var(--spacing-md);
     }
 }

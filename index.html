@@ -55,25 +55,26 @@
 
         <!-- Game Section -->
         <section class="game-section" id="games">
-            <div class="game-header">
-                <h2 class="game-title">Scenario: TechStart UK Ltd</h2>
-                <div class="game-stats">
-                    <div class="stat">
-                        <span class="stat-label">Level</span>
-                        <span class="stat-value" id="currentLevel">1</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Lives</span>
-                        <span class="stat-value" id="lives">❤️❤️❤️</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="game-content">
-                <!-- Scenario Section -->
-                <div class="scenario-section">
-                    <div class="scenario-card">
-                        <h3>Business Transaction</h3>
+                <!-- Combined Header and Scenario Section -->
+                <div class="game-header-scenario-combined">
+                    <div class="header-stats-row">
+                        <div class="scenario-title-section">
+                            <h2 class="game-title">Scenario: TechStart UK Ltd</h2>
+                            <h3 class="business-transaction-title">Business Transaction</h3>
+                        </div>
+                        <div class="game-stats">
+                            <div class="stat">
+                                <span class="stat-label">Level</span>
+                                <span class="stat-value" id="currentLevel">1</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Lives</span>
+                                <span class="stat-value" id="lives">❤️❤️❤️</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scenario-content">
                         <p id="scenarioText">Loading scenario...</p>
                         <div class="transaction-details" id="transactionDetails">
                             <!-- Transaction details will be populated here -->
