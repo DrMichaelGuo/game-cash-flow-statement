@@ -168,14 +168,16 @@ class CashFlowGame {
         const transactionId = e.dataTransfer.getData('text/plain');
         const draggedElement = document.querySelector(`[data-transaction-id="${transactionId}"]`);
         const dropZone = e.target.closest('.drop-zone');
-        const category = dropZone.dataset.category;
         
         if (draggedElement && dropZone) {
+            const category = dropZone.dataset.category;
+            const dropArea = dropZone.querySelector('.drop-area');
+            
             // Remove from previous location if it exists
             this.removeFromPreviousLocation(transactionId);
             
-            // Add to new location
-            e.target.appendChild(draggedElement);
+            // Add to the drop area container, not to the target element
+            dropArea.appendChild(draggedElement);
             this.playerAnswers[transactionId] = category;
             
             // Update totals
@@ -344,8 +346,8 @@ class CashFlowGame {
     }
 
     showGameSection() {
-        document.getElementById('gameSection').style.display = 'block';
-        document.getElementById('gameSection').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('games').style.display = 'block';
+        document.getElementById('games').scrollIntoView({ behavior: 'smooth' });
     }
 
     showNextLevelButton() {
@@ -379,7 +381,7 @@ class CashFlowGame {
         this.streak = 0;
         this.lives = 3;
         this.updateUI();
-        document.getElementById('gameSection').style.display = 'none';
+        document.getElementById('games').style.display = 'none';
     }
 
     showCompletionMessage() {
@@ -455,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        if (e.key === 'Enter' && document.getElementById('gameSection').style.display !== 'none') {
+        if (e.key === 'Enter' && document.getElementById('games').style.display !== 'none') {
             checkAnswer();
         }
     });
