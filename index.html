@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashFlow Quest - Learn Cash Flow Statements</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">
+                    <span class="logo-icon">💰</span>
+                    <span class="logo-text">CashFlow Quest</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#learn" class="nav-link">Learn</a>
+                    <a href="#practice" class="nav-link">Practice</a>
+                    <a href="#leaderboard" class="nav-link">Leaderboard</a>
+                </div>
+                <div class="user-score">
+                    <span class="score-label">Score:</span>
+                    <span class="score-value" id="totalScore">0</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Master Cash Flow Statements</h1>
+                <p class="hero-subtitle">Learn accounting fundamentals through interactive gaming. Understand operating, investing, and financing activities in a UK business context.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="startGame()">Start Learning</button>
+                    <button class="btn-secondary" onclick="showTutorial()">How to Play</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="cash-flow-preview">
+                    <div class="preview-card">
+                        <h3>Cash Flow Statement</h3>
+                        <div class="flow-item positive">Operating Activities: +£50,000</div>
+                        <div class="flow-item negative">Investing Activities: -£30,000</div>
+                        <div class="flow-item positive">Financing Activities: +£15,000</div>
+                        <div class="flow-total">Net Change: +£35,000</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Section -->
+        <section class="game-section" id="gameSection" style="display: none;">
+            <div class="game-header">
+                <h2 class="game-title">Scenario: TechStart UK Ltd</h2>
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Level</span>
+                        <span class="stat-value" id="currentLevel">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Lives</span>
+                        <span class="stat-value" id="lives">❤️❤️❤️</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Streak</span>
+                        <span class="stat-value" id="streak">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-content">
+                <div class="scenario-panel">
+                    <div class="scenario-card">
+                        <h3>Business Transaction</h3>
+                        <p id="scenarioText">Loading scenario...</p>
+                        <div class="transaction-details" id="transactionDetails">
+                            <!-- Transaction details will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cash-flow-builder">
+                    <h3>Drag transactions to the correct category</h3>
+                    <div class="drop-zones">
+                        <div class="drop-zone" data-category="operating">
+                            <h4>Operating Activities</h4>
+                            <p class="category-description">Day-to-day business operations</p>
+                            <div class="drop-area" id="operatingDrop"></div>
+                            <div class="category-total">Total: £<span id="operatingTotal">0</span></div>
+                        </div>
+                        
+                        <div class="drop-zone" data-category="investing">
+                            <h4>Investing Activities</h4>
+                            <p class="category-description">Purchases/sales of long-term assets</p>
+                            <div class="drop-area" id="investingDrop"></div>
+                            <div class="category-total">Total: £<span id="investingTotal">0</span></div>
+                        </div>
+                        
+                        <div class="drop-zone" data-category="financing">
+                            <h4>Financing Activities</h4>
+                            <p class="category-description">Raising/repaying capital</p>
+                            <div class="drop-area" id="financingDrop"></div>
+                            <div class="category-total">Total: £<span id="financingTotal">0</span></div>
+                        </div>
+                    </div>
+
+                    <div class="draggable-items" id="draggableItems">
+                        <!-- Draggable transaction items will be populated here -->
+                    </div>
+
+                    <div class="game-actions">
+                        <button class="btn-check" onclick="checkAnswer()">Check Answer</button>
+                        <button class="btn-hint" onclick="showHint()">Hint</button>
+                        <button class="btn-next" onclick="nextLevel()" style="display: none;">Next Level</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </section>
+
+        <!-- Tutorial Modal -->
+        <div class="modal" id="tutorialModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>How to Play CashFlow Quest</h2>
+                    <button class="modal-close" onclick="closeTutorial()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="tutorial-steps">
+                        <div class="tutorial-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Read the Scenario</h3>
+                                <p>Each level presents a UK business scenario with various transactions.</p>
+                            </div>
+                        </div>
+                        <div class="tutorial-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Categorise Transactions</h3>
+                                <p>Drag each transaction to the correct cash flow category:</p>
+                                <ul>
+                                    <li><strong>Operating:</strong> Daily business activities</li>
+                                    <li><strong>Investing:</strong> Asset purchases/sales</li>
+                                    <li><strong>Financing:</strong> Raising/repaying capital</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tutorial-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Build Your Skills</h3>
+                                <p>Earn points, maintain streaks, and unlock new levels. Use hints when needed!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Modal -->
+        <div class="modal" id="feedbackModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="feedbackTitle">Well Done!</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="feedback-content" id="feedbackContent">
+                        <!-- Feedback content will be populated here -->
+                    </div>
+                    <div class="feedback-actions">
+                        <button class="btn-primary" onclick="closeFeedback()">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
